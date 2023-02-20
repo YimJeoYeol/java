@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 //CRUD 담당하는 클래스
 public class PhoneBookManager {
@@ -8,20 +8,21 @@ public class PhoneBookManager {
 	int curCnt=0;
 	
 	public /*static*/ void inputData() {
+		switch(choice) {
 		
-		// 분류를 입력받고 분류별로 입력을 다르게 받기
-		System.out.println("1: 일반, 2: 대학, 3: 회사");
-		int choise = Integer.parseInt(ManuViewr.sc.nextLine());
+		case 1:
 		//2. 이름, 전번, 생일 입력받기
 		System.out.print("이름을 입렵하세요.>");
 		String name = ManuViewr.sc.nextLine();
 		System.out.print("전화번호를 입력하세요.>");
 		String phonenumber = ManuViewr.sc.nextLine();
 		System.out.print("생일을 입력하세요.>");
-		String birth = ManuViewr.sc.nextLine();	
+		String birth = ManuViewr.sc.nextLine();
 		
+	
 		//3.객체 생성하기
 		infoStorage[curCnt++] =new PhoneInfo(name, phonenumber, birth);
+		}
 		//curCnt++; //윗줄에 것을 쓰던가 둘중에 하나를 씀 
 		//4.결과 출력
 		//infoStorage[curCnt].showPhoneInfo();

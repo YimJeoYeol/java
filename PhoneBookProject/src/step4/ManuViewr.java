@@ -1,9 +1,10 @@
-package step3;
+package step4;
 
 import java.util.Scanner;
 
 public class ManuViewr {
 	static Scanner sc = new Scanner(System.in);
+	
 	public static void showMenu() {
 		System.out.println("선택하세요???");
 		 System.out.println("1. 데이터 입력.");
@@ -15,4 +16,5 @@ public class ManuViewr {
 		 System.out.print("메뉴선택====>");
 		 
 	}
-}
+	}
+

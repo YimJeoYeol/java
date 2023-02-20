@@ -1,4 +1,4 @@
-package step1;
+package step4;
 
 public class PhoneInfo {
 	
@@ -12,7 +12,8 @@ public class PhoneInfo {
 		/*this.name 			= name;
 		this.phoneNumber 	= phoneNumber;
 		*/
-		this(name, phoneNumber);
+		this.name = name;
+		this.phoneNumber = phoneNumber;
 		this.birth 			= birth;
 	}
 	PhoneInfo(String name, String phoneNumber){
@@ -20,14 +21,17 @@ public class PhoneInfo {
 		this.phoneNumber 	= phoneNumber;
 	}
 	
+
 	
-	void showPhoeInfo() {
+	void showPhoneInfo() {
 		if(birth == null) {
 			System.out.printf("이름 :%s, 폰번호 : %s%n", name, phoneNumber);
 		}else {
 			System.out.printf("이름 :%s, 폰번호 : %s, 생일 : %s%n", name, phoneNumber, birth);
 		}
+		
 	}
+	
 	
 	
 }
