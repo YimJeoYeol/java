@@ -2,15 +2,13 @@ package step4;
 
 //CRUD 담당하는 클래스
 public class PhoneBookManager {
-	final int MAX_CNT = 100;
+	final int MAX_CNT = 10000;
 	//PhoneInfo[]  infoStorage = new PhoneInfo[100];
 	PhoneInfo[]  infoStorage = new PhoneInfo[MAX_CNT];
-	int curCnt=0;
+	int curCnt = 0;
 	
-	public /*static*/ void inputData() {
-		switch(choice) {
+/*	public  void inputData() {
 		
-		case 1:
 		//2. 이름, 전번, 생일 입력받기
 		System.out.print("이름을 입렵하세요.>");
 		String name = ManuViewr.sc.nextLine();
@@ -19,14 +17,131 @@ public class PhoneBookManager {
 		System.out.print("생일을 입력하세요.>");
 		String birth = ManuViewr.sc.nextLine();
 		
-	
 		//3.객체 생성하기
 		infoStorage[curCnt++] =new PhoneInfo(name, phonenumber, birth);
-		}
+		//curCnt++; //윗줄에 것을 쓰던가 둘중에 하나를 씀 
+		//4.결과 출력
+		//infoStorage[curCnt].showPhoneInfo();
+				}
+		
+	
+	public void CompanyinputData() {
+		System.out.print("이름을 입렵하세요.>");
+		String name = ManuViewr.sc.nextLine();
+		System.out.print("전화번호를 입력하세요.>");
+		String phonenumber = ManuViewr.sc.nextLine();
+		System.out.print("생일을 입력하세요.>");
+		String birth = ManuViewr.sc.nextLine();
+		System.out.println("회사명을 입력하세요.>");
+		String company = ManuViewr.sc.nextLine();
+		
+		//3.객체 생성하기
+		infoStorage[curCnt++] = new PhoneCompanyInfo(name, phonenumber, birth, company);
+		
 		//curCnt++; //윗줄에 것을 쓰던가 둘중에 하나를 씀 
 		//4.결과 출력
 		//infoStorage[curCnt].showPhoneInfo();
 	}
+	
+
+	public  void UnivinputData() {
+		
+		
+		//2. 이름, 전번, 생일 입력받기
+		System.out.print("이름을 입렵하세요.>");
+		String name = ManuViewr.sc.nextLine();
+		System.out.print("전화번호를 입력하세요.>");
+		String phonenumber = ManuViewr.sc.nextLine();
+		System.out.print("생일을 입력하세요.>");
+		String birth = ManuViewr.sc.nextLine();
+		System.out.print("대학을 입력하세요.>");
+		String majo = ManuViewr.sc.nextLine();
+		System.out.print("학과을 입력하세요.>");
+		String grad = ManuViewr.sc.nextLine();
+		
+		//3.객체 생성하기
+		infoStorage[curCnt++] =new PhoneUnivInfo(name, phonenumber, birth,majo,grad);
+		//curCnt++; //윗줄에 것을 쓰던가 둘중에 하나를 씀 
+		//4.결과 출력
+		//infoStorage[curCnt].showPhoneInfo();
+		
+		}*/
+	
+	
+	private PhoneInfo readData() {
+		System.out.println("이름 : ==>");
+		String name = ManuViewr.sc.nextLine();
+		System.out.println("전번 : ==>");
+		String phoneNumber =  ManuViewr.sc.nextLine();
+		System.out.println("생일 : ==>");
+		String birth =  ManuViewr.sc.nextLine();
+		//3.객체 생성하기
+		return new PhoneInfo(name, phoneNumber, birth);
+	}
+	private PhoneInfo /*PhoneUnivInfo*/readUnivData() {							//다형성적용해서 다받을수 잇다 PhoneUnivInfo부모 한테 넘길수 잇음
+		//2.이름, 전번, 생일 입력받아놓기
+		System.out.println("이름 : ==>");
+		String name = ManuViewr.sc.nextLine();
+		System.out.println("전번 : ==>");
+		String phoneNumber =  ManuViewr.sc.nextLine();
+		System.out.println("생일 : ==>");
+		String birth =  ManuViewr.sc.nextLine();
+		System.out.println("전공 : ==>");
+		String major = ManuViewr.sc.nextLine();
+		System.out.println("학년 : ==>");
+		int grade = Integer.parseInt(ManuViewr.sc.nextLine())  ;
+		//3.객체 생성하기
+		return new PhoneUnivInfo(name, phoneNumber, birth, major, grade);
+	}
+	private PhoneInfo/*PhoneCompanyInfo*/ readCompanyData() {
+		//2.이름, 전번, 생일 입력받아놓기
+		System.out.println("이름 : ==>");
+		String name = ManuViewr.sc.nextLine();
+		System.out.println("전번 : ==>");
+		String phoneNumber =  ManuViewr.sc.nextLine();
+		System.out.println("생일 : ==>");
+		String birth =  ManuViewr.sc.nextLine();
+		System.out.println("회사명 : ==>");
+		String company = ManuViewr.sc.nextLine();
+
+		//3.객체 생성하기
+		return new PhoneCompanyInfo(name, phoneNumber, birth, company);
+	}
+	
+
+		
+	
+	//생성
+	public void inputData() {
+		//분류를 입력받고 분류별로 입력을 다르게 받기
+		System.out.print("1:일반, 2:대학, 3:회사");
+		int choice = Integer.parseInt(ManuViewr.sc.nextLine());
+		PhoneInfo tmp = null;
+		
+		switch(choice)
+		{
+		case 1:
+			//2.이름, 전번, 생일 입력받아놓기
+			tmp = readData();
+			break;
+			
+		case 2:
+			tmp = readUnivData();
+			break;
+			
+		case 3:
+			tmp = readCompanyData();
+			break;
+		}
+		//저장하기
+		infoStorage[curCnt] = tmp;
+		//4.결과 출력하기
+		//infoStorage[curCnt].showPhoneInfo();
+		
+		curCnt++;
+		System.out.println("저장완료");
+	}
+
 	
 	//전체 출력
 	public void displayAll() {
@@ -115,6 +230,7 @@ public class PhoneBookManager {
 			infoStorage[idx].phoneNumber = ManuViewr.sc.nextLine();
 			System.out.println("새 생일을 입력하세요");
 			infoStorage[idx].birth 	   = ManuViewr.sc.nextLine();
+			infoStorage[idx].phoneNumber = ManuViewr.sc.nextLine();
 		}	
 	}
 	}

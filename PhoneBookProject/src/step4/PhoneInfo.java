@@ -5,8 +5,10 @@ public class PhoneInfo {
 	String name;
 	String phoneNumber;
 	String birth;
+	
 	//메소드 일종 오버로딩
-	PhoneInfo(){} 
+	
+	
 	//생성자 오버로딩
 	PhoneInfo(String name, String phoneNumber, String birth){
 		/*this.name 			= name;
@@ -22,6 +24,7 @@ public class PhoneInfo {
 	}
 	
 
+	
 	
 	void showPhoneInfo() {
 		if(birth == null) {

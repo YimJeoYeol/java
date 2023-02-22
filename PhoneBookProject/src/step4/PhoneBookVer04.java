@@ -20,6 +20,12 @@ public class PhoneBookVer04 {
 		case 1:
 			pm.inputData();
 		break;
+		/*case 2:
+			pm.CompanyinputData();
+		break;
+		case 3:
+			pm.UnivinputData();
+		break;*/
 		case 2:
 			pm.searchData();
 			break;
